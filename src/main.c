@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:18:35 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/26 19:47:35 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/26 20:58:49 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ int	main(int ac, char *av[])
 	init_args(&l, ac, av);
 	set_index(l);
 	checks(l, 1);
-	swap(&l);
-	ft_printf("list:\n");
-	print_list(l);
 	freelist(l);
 	return (0);
 }

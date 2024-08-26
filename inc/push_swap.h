@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:14:02 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/26 19:48:05 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/26 20:27:08 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdbool.h>
 # include "ft_printf.h"
 
 typedef struct s_stack
@@ -45,6 +46,9 @@ void	error_return(t_stack *L);
 void	init_args(t_stack **L, int ac, char *av[]);
 void	set_index(t_stack *L);
 
-void	swap(t_stack **L);
+void	sa(t_stack **A);
+void	sb(t_stack **B);
+void	ss(t_stack **A, t_stack **B);
+
 
 #endif
