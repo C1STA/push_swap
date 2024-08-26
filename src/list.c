@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:19:47 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/22 09:47:00 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/26 18:16:00 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,15 @@ int	lenlist(t_stack *L)
 		len++;
 	}
 	return (len);
+}
+
+void	print_list(t_stack *L)
+{
+	if (!L)
+		return ;
+	while (L)
+	{
+		ft_printf("%d\n", L->value);
+		L = L->next;
+	}
 }

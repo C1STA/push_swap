@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 04:18:35 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/26 19:47:35 by wacista          ###   ########.fr       */
+/*   Created: 2024/08/26 19:42:29 by wacista           #+#    #+#             */
+/*   Updated: 2024/08/26 19:46:04 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char *av[])
+void	swap(t_stack **L)
 {
-	t_stack	*l;
+	t_stack	*tmp;
 
-	l = NULL;
-	init_args(&l, ac, av);
-	set_index(l);
-	checks(l, 1);
-	swap(&l);
-	ft_printf("list:\n");
-	print_list(l);
-	freelist(l);
-	return (0);
+	if (!*L || !(*L)->next)
+		return ;
+	tmp = (*L)->next;
+	(*L)->next = tmp->next;
+	tmp->next = *L;
+	*L = tmp;
 }

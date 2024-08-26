@@ -15,7 +15,8 @@ SRC		= main.c \
 		ft_atoi.c \
 		index.c \
 		list.c \
-		parse.c
+		parse.c \
+		swap.c
 
 OBJDIR	= obj/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.c=.o))

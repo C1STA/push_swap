@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:14:02 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/22 11:36:10 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/26 19:48:05 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_stack
 t_stack	*addat(t_stack *L, int data, int pos);
 t_stack	*freelist(t_stack *L);
 int		lenlist(t_stack *L);
+void	print_list(t_stack *L);
 
 int		ft_atoi(const char *s, t_stack *L);
 
@@ -43,5 +44,7 @@ void	error_return(t_stack *L);
 
 void	init_args(t_stack **L, int ac, char *av[]);
 void	set_index(t_stack *L);
+
+void	swap(t_stack **L);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:09:15 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/22 11:52:55 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/22 13:13:51 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int	is_sorted(t_stack *L)
 	curr = L;
 	while (curr)
 	{
-		ft_printf("index = %d - i = %d\n", curr->index, i);
 		if (curr->index != i)
 			return (0);
 		i++;
@@ -62,5 +61,8 @@ void	checks(t_stack *L, int n)
 	if (is_duplicate(L))
 		error_return(L);
 	if (is_sorted(L) && n)
-		error_return(L);
+	{
+		freelist(L);
+		exit(EXIT_SUCCESS);
+	}
 }
