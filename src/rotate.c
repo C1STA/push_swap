@@ -1,53 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 19:42:29 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/27 17:29:38 by wacista          ###   ########.fr       */
+/*   Created: 2024/08/27 19:40:25 by wacista           #+#    #+#             */
+/*   Updated: 2024/08/27 21:20:15 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static bool	swap(t_stack **L)
+static bool	rotate(t_stack **L)
 {
 	t_stack	*tmp;
+	t_stack	*head;
 
 	if (!L || !*L || !(*L)->next)
 		return (false);
 	tmp = (*L)->next;
-	(*L)->next = tmp->next;
+	head = tmp;
+	(*L)->next = NULL;
+	while (tmp->next)
+		tmp = tmp->next;
 	tmp->next = *L;
-	*L = tmp;
+	*L = head;
 	return (true);
 }
 
-void	sa(t_stack **A)
+void	ra(t_stack **A)
 {
-	if (swap(A))
-		ft_printf("sa\n");
+	if (rotate(A))
+		printf("ra\n");
 }
 
-void	sb(t_stack **B)
+void	rb(t_stack **B)
 {
-	if (swap(B))
-		ft_printf("sb\n");
+	if (rotate(B))
+		printf("rb\n");
 }
 
-void	ss(t_stack **A, t_stack **B)
+void	rr(t_stack **A, t_stack **B)
 {
-	bool	sa;
-	bool	sb;
+	bool	ra;
+	bool	rb;
 
-	sa = swap(A);
-	sb = swap(B);
-	if (sa && sb)
-		ft_printf("ss\n");
-	else if (sa)
-		ft_printf("sa\n");
-	else if (sb)
-		ft_printf("sb\n");
+	ra = rotate(A);
+	rb = rotate(B);
+	if (ra && rb)
+		ft_printf("rr\n");
+	else if (ra)
+		ft_printf("ra\n");
+	else if (rb)
+		ft_printf("rb\n");
 }

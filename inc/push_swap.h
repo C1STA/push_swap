@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:14:02 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/27 16:47:35 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/27 21:08:19 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,9 @@ void	ss(t_stack **A, t_stack **B);
 
 void	pa(t_stack **A, t_stack **B);
 void	pb(t_stack **A, t_stack **B);
+
+void	ra(t_stack **A);
+void	rb(t_stack **B);
+void	rr(t_stack **A, t_stack **B);
 
 #endif
