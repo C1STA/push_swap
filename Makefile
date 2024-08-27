@@ -8,7 +8,7 @@ CC		= cc
 RM		= rm -rf
 NAME	= push_swap
 INC		= -I inc/ -I libs/ft_printf
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror
 
 SRCPATH	= src/
 SRC		= main.c \
@@ -16,7 +16,8 @@ SRC		= main.c \
 		index.c \
 		list.c \
 		parse.c \
-		swap.c
+		swap.c \
+		push.c
 
 OBJDIR	= obj/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.c=.o))

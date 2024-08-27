@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:42:29 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/26 20:37:38 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/27 17:05:25 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ss(t_stack **A, t_stack **B)
 
 	sa = swap(A);
 	sb = swap(B);
-	
+
 	if (sa && sb)
 		ft_printf("ss\n");
 	else if (sa)
