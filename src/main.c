@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:18:35 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/27 21:09:31 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/28 18:22:19 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int ac, char *av[])
 	print_list(l);
 	printf("\n");
 	print_list(b);
-	rr(&l, &b);
+	rrr(&l, &b);
 	printf("\n----------------\n");
 	print_list(l);
 	printf("\n");
