@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 04:18:35 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/30 21:24:02 by wacista          ###   ########.fr       */
+/*   Created: 2024/08/28 19:08:44 by wacista           #+#    #+#             */
+/*   Updated: 2024/08/30 21:26:36 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_stack **L)
+void	three_sort(t_stack **L, int max_index)
 {
-	int	len;
-
-	len = lenlist(*L);
-	if (len < 3)
+	if ((*L)->index == max_index)
+		ra(L);
+	if ((*L)->next->index == max_index)
+		rra(L);
+	if ((*L)->index > (*L)->next->index)
 		sa(L);
-	if (len > 3)
-		big_sort(L);
-	if (len == 3)
-		three_sort(L, len);
 }
 
-int	main(int ac, char *av[])
+void	big_sort(t_stack **A)
 {
-	t_stack	*a;
+	t_stack	*b;
 
-	a = NULL;
-	init_args(&a, ac, av);
-	set_index(a);
-	checks(a, 1);
-	push_swap(&a);
-	freelist(a);
-	return (0);
+	b = NULL;
+	send_to_b(A, &b);
+	//while (b)
+	//{
+		set_pos(A);
+		set_pos(&b);
+		set_target(*A, b);
+	//}
+	print_list(*A, 'A');
+	print_list(b, 'B');
 }

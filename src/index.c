@@ -6,11 +6,25 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:29:40 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/22 09:02:01 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/30 21:16:06 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	find_max_index(t_stack *L)
+{
+	int	max;
+
+	max = 0;
+	while (L)
+	{
+		if (L->index > max)
+			max = L->index;
+		L = L->next;
+	}
+	return (max);
+}
 
 void	init_args(t_stack **L, int ac, char *av[])
 {

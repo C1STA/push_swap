@@ -19,7 +19,10 @@ SRC		= main.c \
 		instruction_swap.c \
 		instruction_push.c \
 		instruction_rotate.c \
-		instruction_rev_rotate.c
+		instruction_rev_rotate.c \
+		sort.c \
+		pre_sort.c \
+		position.c
 
 OBJDIR	= obj/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.c=.o))

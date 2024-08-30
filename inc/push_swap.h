@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:14:02 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/28 18:22:31 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/30 21:21:43 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_stack
 t_stack	*addat(t_stack *L, int data, int pos);
 t_stack	*freelist(t_stack *L);
 int		lenlist(t_stack *L);
-void	print_list(t_stack *L);
+void	print_list(t_stack *L, char c);
 
 int		ft_atoi(const char *s, t_stack *L);
 
@@ -60,5 +60,14 @@ void	rr(t_stack **A, t_stack **B);
 void	rra(t_stack **A);
 void	rrb(t_stack **B);
 void	rrr(t_stack **A, t_stack **B);
+
+void	three_sort(t_stack **L, int max_index);
+void	big_sort(t_stack **A);
+
+void	send_to_b(t_stack **A, t_stack **B);
+
+void	set_pos(t_stack **L);
+void	set_target(t_stack *A, t_stack *B);
+int		find_max_index(t_stack *L);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:19:47 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/26 18:16:00 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/30 21:30:49 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,15 @@ int	lenlist(t_stack *L)
 	return (len);
 }
 
-void	print_list(t_stack *L)
+void	print_list(t_stack *L, char c)
 {
 	if (!L)
 		return ;
+	printf("List: %c\n", c);
 	while (L)
 	{
-		ft_printf("%d\n", L->value);
+		printf("%c->value: %d - %c->index: %d - %c->pos: %d - %c->tar\
+get_pos: %d\n", c, L->value, c, L->index, c, L->pos, c, L->target_pos);
 		L = L->next;
 	}
 }
