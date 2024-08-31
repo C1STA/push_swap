@@ -23,7 +23,8 @@ SRC		= main.c \
 		sort.c \
 		pre_sort.c \
 		position.c \
-		cost.c
+		cost.c \
+		exec.c
 
 OBJDIR	= obj/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.c=.o))

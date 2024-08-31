@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calcul.c                                           :+:      :+:    :+:   */
+/*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:56:39 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/31 17:21:22 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/31 22:35:25 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	abs_(int value)
+{
+	if (value < 0)
+		return (-value);
+	return (value);
+}
 
 static int	get_rrb_cost(t_stack *L, int pos)
 {
@@ -56,6 +63,7 @@ void	set_cost(t_stack *A, t_stack *B)
 			b->cost_b = -lenlist(b);
 		else
 			b->cost_b = get_rrb_cost(B, b->pos);
+		b->final_cost = abs_(b->cost_a) + abs_(b->cost_b);
 		b = b->next;
 	}
 }

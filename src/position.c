@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 21:13:24 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/30 21:20:40 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/31 23:34:28 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	set_pos(t_stack **L)
 static int	position_of_min_index(t_stack *L)
 {
 	int	pos;
-	int	min_index;
+	long	min_index;
 
-	min_index = 0;
+	min_index = LONG_MAX;
 	while (L)
 	{
-		if (min_index < L->index)
+		if (L->index < min_index)
 		{
 			min_index = L->index;
 			pos = L->pos;

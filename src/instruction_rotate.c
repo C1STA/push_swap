@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   instruction_rotate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:40:25 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/27 21:20:15 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/31 21:30:00 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static bool	rotate(t_stack **L)
 void	ra(t_stack **A)
 {
 	if (rotate(A))
-		printf("ra\n");
+		ft_printf("ra\n");
 }
 
 void	rb(t_stack **B)
 {
 	if (rotate(B))
-		printf("rb\n");
+		ft_printf("rb\n");
 }
 
 void	rr(t_stack **A, t_stack **B)
