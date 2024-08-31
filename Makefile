@@ -22,7 +22,8 @@ SRC		= main.c \
 		instruction_rev_rotate.c \
 		sort.c \
 		pre_sort.c \
-		position.c
+		position.c \
+		cost.c
 
 OBJDIR	= obj/
 OBJ		= $(addprefix $(OBJDIR), $(SRC:.c=.o))

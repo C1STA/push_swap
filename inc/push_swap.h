@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:14:02 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/30 21:21:43 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/31 17:43:13 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ void	send_to_b(t_stack **A, t_stack **B);
 void	set_pos(t_stack **L);
 void	set_target(t_stack *A, t_stack *B);
 int		find_max_index(t_stack *L);
+
+void	set_cost(t_stack *A, t_stack *B);
 
 #endif

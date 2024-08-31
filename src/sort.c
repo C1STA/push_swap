@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:08:44 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/30 21:26:36 by wacista          ###   ########.fr       */
+/*   Updated: 2024/08/31 17:32:55 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	big_sort(t_stack **A)
 		set_pos(A);
 		set_pos(&b);
 		set_target(*A, b);
+		set_cost(*A, b);
 	//}
-	print_list(*A, 'A');
+	//print_list(*A, 'A');
 	print_list(b, 'B');
+	freelist(b);
 }
