@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 21:00:08 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/31 21:30:00 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/05 18:14:13 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	pa(t_stack **A, t_stack **B)
 	*B = (*B)->next;
 	tmp->next = *A;
 	*A = tmp;
-	ft_printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **A, t_stack **B)
@@ -35,5 +35,5 @@ void	pb(t_stack **A, t_stack **B)
 	*A = (*A)->next;
 	tmp->next = *B;
 	*B = tmp;
-	ft_printf("pb\n");
+	write(1, "pb\n", 3);
 }

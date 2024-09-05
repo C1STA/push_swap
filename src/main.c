@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:18:35 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/30 21:24:02 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/05 18:36:42 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	push_swap(t_stack **L)
 	len = lenlist(*L);
 	if (len < 3)
 		sa(L);
-	if (len > 3)
+	else if (len > 3)
 		big_sort(L);
-	if (len == 3)
+	else if (len == 3)
 		three_sort(L, len);
 }
 

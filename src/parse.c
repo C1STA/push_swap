@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:09:15 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/22 13:13:51 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/05 18:06:51 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error_return(t_stack *L)
 {
 	freelist(L);
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
 
@@ -65,4 +65,31 @@ void	checks(t_stack *L, int n)
 		freelist(L);
 		exit(EXIT_SUCCESS);
 	}
+}
+
+int	ft_atoi(const char *s, t_stack *L)
+{
+	long	res;
+	int		sign;
+
+	res = 0;
+	sign = 1;
+	if (!*s)
+		error_return(L);
+	while ((*s >= 9 && *s <= 13) || *s == 32)
+		s++;
+	if ((*s == '-' || *s == '+') && *(s + 1))
+	{
+		if (*s == '-')
+			sign = -1;
+		s++;
+	}
+	while (*s >= '0' && *s <= '9')
+	{
+		res = res * 10 + *s - '0';
+		s++;
+	}
+	if ((res * sign) < INT_MIN || (res * sign) > INT_MAX || *s)
+		error_return(L);
+	return ((int)res * sign);
 }

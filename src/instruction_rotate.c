@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 19:40:25 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/31 21:30:00 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/05 18:08:39 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static bool	rotate(t_stack **L)
 void	ra(t_stack **A)
 {
 	if (rotate(A))
-		ft_printf("ra\n");
+		write(1, "ra\n", 3);
 }
 
 void	rb(t_stack **B)
 {
 	if (rotate(B))
-		ft_printf("rb\n");
+		write(1, "rb\n", 3);
 }
 
 void	rr(t_stack **A, t_stack **B)
@@ -49,9 +49,9 @@ void	rr(t_stack **A, t_stack **B)
 	ra = rotate(A);
 	rb = rotate(B);
 	if (ra && rb)
-		ft_printf("rr\n");
+		write(1, "rr\n", 3);
 	else if (ra)
-		ft_printf("ra\n");
+		write(1, "ra\n", 3);
 	else if (rb)
-		ft_printf("rb\n");
+		write(1, "rb\n", 3);
 }

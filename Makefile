@@ -7,12 +7,11 @@ WHITE	=\033[0;37m
 CC		= cc
 RM		= rm -rf
 NAME	= push_swap
-INC		= -I inc/ -I libs/ft_printf
+INC		= -I inc/
 CFLAGS	= -Wall -Wextra -Werror
 
 SRCPATH	= src/
 SRC		= main.c \
-		ft_atoi.c \
 		index.c \
 		list.c \
 		parse.c \
@@ -32,18 +31,11 @@ OBJ		= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 DEPDIR	= dep/
 DEP		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
 
-PRINTF_DIR	= libs/ft_printf
-PRINTF		= $(PRINTF_DIR)/libftprintf.a
-
-all: $(PRINTF) $(NAME)
-
-$(PRINTF):
-		@echo "$(YELLOW)Building ft_printf...$(WHITE)"
-		@$(MAKE) --no-print-directory -C $(PRINTF_DIR)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 		@echo "$(CYAN)Linking $(NAME)...$(WHITE)"
-		@$(CC) $(CFLAGS) $(OBJ) $(PRINTF) -o $(NAME)
+		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 		@echo "$(GREEN)Done$(WHITE)"
 
 $(OBJDIR)%.o: $(SRCPATH)%.c
@@ -57,17 +49,12 @@ $(DEPDIR)%.d: $(SRCPATH)%.c
 -include $(DEP)
 
 clean:
-		@echo "$(RED)Cleaning $(NAME) build artifacts...$(WHITE)"
+		@echo "$(RED)Cleaning $(NAME)...$(WHITE)"
 		@$(RM) $(OBJDIR) $(DEPDIR)
-		@$(MAKE) --no-print-directory -C $(PRINTF_DIR) clean
 		@echo "$(GREEN)Done$(WHITE)"
 
-fclean:
-		@echo "$(RED)Cleaning $(NAME) binary and build artifacts...$(WHITE)"
-		@$(RM) $(OBJDIR) $(DEPDIR)
+fclean: clean
 		@$(RM) $(NAME)
-		@$(MAKE) --no-print-directory -C $(PRINTF_DIR) fclean
-		@echo "$(GREEN)Done$(WHITE)"
 
 re: fclean all
 

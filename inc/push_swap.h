@@ -6,20 +6,17 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 04:14:02 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/31 22:23:34 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/05 18:34:56 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
-# include <stddef.h>
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
-# include "ft_printf.h"
 
 typedef struct s_stack
 {
@@ -36,7 +33,6 @@ typedef struct s_stack
 t_stack	*addat(t_stack *L, int data, int pos);
 t_stack	*freelist(t_stack *L);
 int		lenlist(t_stack *L);
-void	print_list(t_stack *L, char c);
 
 int		ft_atoi(const char *s, t_stack *L);
 
@@ -73,6 +69,5 @@ int		find_max_index(t_stack *L);
 void	set_cost(t_stack *A, t_stack *B);
 
 void	exec(t_stack **A, t_stack **B);
-void	last_sort(t_stack **A);
 
 #endif
