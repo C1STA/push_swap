@@ -60,6 +60,7 @@ re: fclean all
 
 norm:
 	@echo "$(YELLOW)Executing norminette...$(WHITE)"
-	@norminette $(addprefix $(SRCPATH), $(SRC))
+	@norminette inc/*
+	@norminette src/*
 
 .PHONY: all clean fclean re norm
