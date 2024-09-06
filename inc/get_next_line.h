@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 04:18:35 by wacista           #+#    #+#             */
-/*   Updated: 2024/09/06 16:06:09 by wacista          ###   ########.fr       */
+/*   Created: 2024/06/06 10:36:37 by wacista           #+#    #+#             */
+/*   Updated: 2024/09/06 16:16:47 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	push_swap(t_stack **L)
-{
-	int	len;
+# include <stdlib.h>
+# include <unistd.h>
+# include <stddef.h>
 
-	len = lenlist(*L);
-	if (len < 3)
-		sa(L, 1);
-	else if (len > 3)
-		big_sort(L);
-	else if (len == 3)
-		three_sort(L, len);
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
-int	main(int ac, char *av[])
-{
-	t_stack	*a;
+char	*get_next_line(int fd);
+char	*join_buffer(char *s1, char *s2);
+int		is_newline(char *s);
+char	*cpy_newline(char *s);
+char	*new_buffer(char *s);
+void	free_buffer(char *buffer);
+size_t	ft_strlen(const char *s);
 
-	a = NULL;
-	init_args(&a, ac, av);
-	set_index(a);
-	checks(a, 1);
-	push_swap(&a);
-	freelist(a);
-	return (0);
-}
+#endif

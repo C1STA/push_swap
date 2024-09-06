@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 19:42:29 by wacista           #+#    #+#             */
-/*   Updated: 2024/09/05 18:12:32 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/06 15:59:21 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,29 @@ static bool	swap(t_stack **L)
 	return (true);
 }
 
-void	sa(t_stack **A)
+void	sa(t_stack **A, bool n)
 {
-	if (swap(A))
+	if (swap(A) && n)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **B)
+void	sb(t_stack **B, bool n)
 {
-	if (swap(B))
+	if (swap(B) && n)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **A, t_stack **B)
+void	ss(t_stack **A, t_stack **B, bool n)
 {
 	bool	sa;
 	bool	sb;
 
 	sa = swap(A);
 	sb = swap(B);
-	if (sa && sb)
+	if (sa && sb && n)
 		write(1, "ss\n", 3);
-	else if (sa)
+	else if (sa && n)
 		write(1, "sa\n", 3);
-	else if (sb)
+	else if (sb && n)
 		write(1, "sb\n", 3);
 }

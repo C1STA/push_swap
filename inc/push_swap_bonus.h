@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 04:14:02 by wacista           #+#    #+#             */
-/*   Updated: 2024/09/06 15:58:21 by wacista          ###   ########.fr       */
+/*   Created: 2024/09/06 13:55:57 by wacista           #+#    #+#             */
+/*   Updated: 2024/09/06 16:38:08 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
+# include "get_next_line.h"
 
 typedef struct s_stack
 {
@@ -38,6 +39,7 @@ int		ft_atoi(const char *s, t_stack *L);
 
 void	checks(t_stack *L, int n);
 void	error_return(t_stack *L);
+bool	is_sorted(t_stack *L);
 
 void	init_args(t_stack **L, int ac, char *av[]);
 void	set_index(t_stack *L);
@@ -56,18 +58,5 @@ void	rr(t_stack **A, t_stack **B, bool n);
 void	rra(t_stack **A, bool n);
 void	rrb(t_stack **B, bool n);
 void	rrr(t_stack **A, t_stack **B, bool n);
-
-void	three_sort(t_stack **L, int max_index);
-void	big_sort(t_stack **A);
-
-void	send_to_b(t_stack **A, t_stack **B);
-
-void	set_pos(t_stack **L);
-void	set_target(t_stack *A, t_stack *B);
-int		find_max_index(t_stack *L);
-
-void	set_cost(t_stack *A, t_stack *B);
-
-void	exec(t_stack **A, t_stack **B);
 
 #endif

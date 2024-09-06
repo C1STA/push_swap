@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 21:23:05 by wacista           #+#    #+#             */
-/*   Updated: 2024/09/05 18:10:53 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/06 16:03:09 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,29 @@ static bool	rev_rotate(t_stack **L)
 	return (true);
 }
 
-void	rra(t_stack **A)
+void	rra(t_stack **A, bool n)
 {
-	if (rev_rotate(A))
+	if (rev_rotate(A) && n)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **B)
+void	rrb(t_stack **B, bool n)
 {
-	if (rev_rotate(B))
+	if (rev_rotate(B) && n)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack **A, t_stack **B)
+void	rrr(t_stack **A, t_stack **B, bool n)
 {
 	bool	rra;
 	bool	rrb;
 
 	rra = rev_rotate(A);
 	rrb = rev_rotate(B);
-	if (rra && rrb)
+	if (rra && rrb && n)
 		write(1, "rrr\n", 4);
-	else if (rra)
+	else if (rra && n)
 		write(1, "rra\n", 4);
-	else if (rrb)
+	else if (rrb && n)
 		write(1, "rrb\n", 4);
 }

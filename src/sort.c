@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:08:44 by wacista           #+#    #+#             */
-/*   Updated: 2024/09/05 18:34:36 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/06 16:07:39 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	three_sort(t_stack **L, int max_index)
 {
 	if ((*L)->index == max_index)
-		ra(L);
+		ra(L, 1);
 	if ((*L)->next->index == max_index)
-		rra(L);
+		rra(L, 1);
 	if ((*L)->index > (*L)->next->index)
-		sa(L);
+		sa(L, 1);
 }
 
 static int	get_min_index_pos(t_stack *L)
@@ -52,12 +52,12 @@ static void	last_sort(t_stack **A)
 	{
 		if (index < 0)
 		{
-			rra(A);
+			rra(A, 1);
 			index++;
 		}
 		else if (index > 0)
 		{
-			ra(A);
+			ra(A, 1);
 			index--;
 		}
 	}

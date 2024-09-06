@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 20:30:47 by wacista           #+#    #+#             */
-/*   Updated: 2024/08/30 21:17:01 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/06 16:06:56 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	send_rest_to_b(t_stack **A, t_stack **B, int size, int median)
 	i = 0;
 	while (i < median - 3)
 	{
-		pb(A, B);
+		pb(A, B, 1);
 		i++;
 	}
 }
@@ -57,12 +57,12 @@ void	send_to_b(t_stack **A, t_stack **B)
 	{
 		if ((*A)->index <= median)
 		{
-			pb(A, B);
+			pb(A, B, 1);
 			if (is_smaller_median(*A, size))
 				break ;
 		}
 		else
-			ra(A);
+			ra(A, 1);
 		i++;
 	}
 	send_rest_to_b(A, B, size, median);

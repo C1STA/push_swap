@@ -6,13 +6,13 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 21:00:08 by wacista           #+#    #+#             */
-/*   Updated: 2024/09/05 18:14:13 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/06 16:01:05 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack **A, t_stack **B)
+void	pa(t_stack **A, t_stack **B, bool n)
 {
 	t_stack	*tmp;
 
@@ -22,10 +22,11 @@ void	pa(t_stack **A, t_stack **B)
 	*B = (*B)->next;
 	tmp->next = *A;
 	*A = tmp;
-	write(1, "pa\n", 3);
+	if (n)
+		write(1, "pa\n", 3);
 }
 
-void	pb(t_stack **A, t_stack **B)
+void	pb(t_stack **A, t_stack **B, bool n)
 {
 	t_stack	*tmp;
 
@@ -35,5 +36,6 @@ void	pb(t_stack **A, t_stack **B)
 	*A = (*A)->next;
 	tmp->next = *B;
 	*B = tmp;
-	write(1, "pb\n", 3);
+	if (n)
+		write(1, "pb\n", 3);
 }

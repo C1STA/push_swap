@@ -6,7 +6,7 @@
 /*   By: wacista <wacista@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 18:03:24 by wacista           #+#    #+#             */
-/*   Updated: 2024/09/05 18:28:31 by wacista          ###   ########.fr       */
+/*   Updated: 2024/09/06 16:05:07 by wacista          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ void	exec(t_stack **A, t_stack **B)
 	while (b->cost_a || b->cost_b)
 	{
 		if (b->cost_a > 0 && b->cost_b > 0)
-			rr(A, B);
+			rr(A, B, 1);
 		else if (b->cost_a < 0 && b->cost_b < 0)
-			rrr(A, B);
+			rrr(A, B, 1);
 		else if (b->cost_a > 0)
-			ra(A);
+			ra(A, 1);
 		if (b->cost_b > 0 && (!b->cost_a || b->cost_a < 0))
-			rb(B);
+			rb(B, 1);
 		if (b->cost_a < 0 && (!b->cost_b || b->cost_b > 0))
-			rra(A);
+			rra(A, 1);
 		if (b->cost_b < 0 && (!b->cost_a || b->cost_a > 0))
-			rrb(B);
+			rrb(B, 1);
 		b->cost_a = set_cost_value(b->cost_a);
 		b->cost_b = set_cost_value(b->cost_b);
 	}
-	pa(A, B);
+	pa(A, B, 1);
 }
