@@ -26,29 +26,29 @@ static int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-static bool	operation_parsing(t_stack **A, t_stack **B, char *s, size_t len)
+static bool	operation_parsing(t_stack **A, t_stack **B, char *s)
 {
-	if (!ft_strncmp(s, "sa\n", len))
+	if (!ft_strncmp(s, "sa\n", 4))
 		sa(A, 0);
-	else if (!ft_strncmp(s, "sb\n", len))
+	else if (!ft_strncmp(s, "sb\n", 4))
 		sb(B, 0);
-	else if (!ft_strncmp(s, "ss\n", len))
+	else if (!ft_strncmp(s, "ss\n", 4))
 		ss(A, B, 0);
-	else if (!ft_strncmp(s, "ra\n", len))
+	else if (!ft_strncmp(s, "ra\n", 4))
 		ra(A, 0);
-	else if (!ft_strncmp(s, "rb\n", len))
+	else if (!ft_strncmp(s, "rb\n", 4))
 		rb(B, 0);
-	else if (!ft_strncmp(s, "rr\n", len))
+	else if (!ft_strncmp(s, "rr\n", 4))
 		rr(A, B, 0);
-	else if (!ft_strncmp(s, "rra\n", len))
+	else if (!ft_strncmp(s, "rra\n", 5))
 		rra(A, 0);
-	else if (!ft_strncmp(s, "rrb\n", len))
+	else if (!ft_strncmp(s, "rrb\n", 5))
 		rrb(B, 0);
-	else if (!ft_strncmp(s, "rrr\n", len))
+	else if (!ft_strncmp(s, "rrr\n", 5))
 		rrr(A, B, 0);
-	else if (!ft_strncmp(s, "pa\n", len))
+	else if (!ft_strncmp(s, "pa\n", 4))
 		pa(A, B, 0);
-	else if (!ft_strncmp(s, "pb\n", len))
+	else if (!ft_strncmp(s, "pb\n", 4))
 		pb(A, B, 0);
 	else
 		return (free(s), freelist(*B), error_return(*A), 1);
@@ -68,7 +68,6 @@ int	main(int ac, char *av[])
 	t_stack	*a;
 	t_stack	*b;
 	char	*s;
-	size_t	len;
 
 	if (ac < 2)
 		return (EXIT_FAILURE);
@@ -80,8 +79,7 @@ int	main(int ac, char *av[])
 	s = get_next_line(STDIN_FILENO);
 	while (s)
 	{
-		len = ft_strlen(s);
-		operation_parsing(&a, &b, s, len);
+		operation_parsing(&a, &b, s);
 		free(s);
 		s = get_next_line(STDIN_FILENO);
 	}

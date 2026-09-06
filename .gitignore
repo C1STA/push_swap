@@ -1,0 +1,5 @@
+push_swap
+checker
+obj/
+dep/
+.DS_Store

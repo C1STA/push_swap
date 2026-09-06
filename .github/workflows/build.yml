@@ -1,0 +1,62 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Build sorter and checker
+        run: |
+          make
+          make bonus
+
+      - name: Validate input handling
+        run: |
+          test -z "$(./push_swap -2147483648 -42 0 17 2147483647)"
+          if ./push_swap 1 1 >/dev/null 2>&1; then exit 1; fi
+          if ./push_swap 2147483648 >/dev/null 2>&1; then exit 1; fi
+          if ./push_swap '   ' >/dev/null 2>&1; then exit 1; fi
+          if printf 'sa' | ./checker 2 1 >/dev/null 2>&1; then exit 1; fi
+
+      - name: Validate sorting and operation counts
+        shell: bash
+        run: |
+          check_case() {
+            local operations result
+            operations=$(./push_swap "$@")
+            if [ -n "$operations" ]; then
+              result=$(printf '%s\n' "$operations" | ./checker "$@")
+              OPERATION_COUNT=$(printf '%s\n' "$operations" | wc -l)
+            else
+              result=$(./checker "$@" </dev/null)
+              OPERATION_COUNT=0
+            fi
+            test "$result" = 'OK'
+          }
+
+          check_case 3 2 1
+          check_case -2147483648 -42 0 17 2147483647
+
+          values=()
+          for ((i = 1; i <= 100; i++)); do
+            values+=("$((i * 37 % 101))")
+          done
+          check_case "${values[@]}"
+          test "$OPERATION_COUNT" -le 700
+
+          values=()
+          for ((i = 1; i <= 500; i++)); do
+            values+=("$((i * 137 % 503))")
+          done
+          check_case "${values[@]}"
+          test "$OPERATION_COUNT" -le 5500

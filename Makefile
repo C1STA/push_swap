@@ -1,99 +1,45 @@
-RED		=\033[0;31m
-CYAN	=\033[0;36m
-GREEN	=\033[0;32m
-YELLOW	=\033[0;33m
-WHITE	=\033[0;37m
+NAME = push_swap
+BONUS_NAME = checker
 
-CC		= cc
-RM		= rm -rf
-NAME	= push_swap
-NAME_B	= checker
-INC		= -I inc/
-CFLAGS	= -Wall -Wextra -Werror
+CC = cc
+CPPFLAGS = -I inc
+CFLAGS = -Wall -Wextra -Werror
 
-SRCPATH	= src/
-SRC	=	main.c \
-		index.c \
-		list.c \
-		parse.c \
-		instruction_swap.c \
-		instruction_push.c \
-		instruction_rotate.c \
-		instruction_rev_rotate.c \
-		sort.c \
-		pre_sort.c \
-		position.c \
-		cost.c \
-		exec.c
+SRC_DIR = src
+OBJ_DIR = obj
 
-SRCP_B	= src/
-SRC_B	=	bonus_checker.c \
-		list.c \
-		index.c \
-		parse.c \
-		get_next_line.c \
-		get_next_line_utils.c \
-		instruction_swap.c \
-		instruction_push.c \
-		instruction_rotate.c \
-		instruction_rev_rotate.c \
+COMMON_SRC = index.c list.c parse.c instruction_swap.c instruction_push.c \
+		instruction_rotate.c instruction_rev_rotate.c
+PUSH_SWAP_SRC = main.c sort.c pre_sort.c position.c cost.c exec.c
+CHECKER_SRC = bonus_checker.c get_next_line.c get_next_line_utils.c
 
-OBJDIR	= obj/
-OBJ		= $(addprefix $(OBJDIR), $(SRC:.c=.o))
-OBJ_B	= $(addprefix $(OBJDIR), $(SRC_B:.c=.o))
-
-DEPDIR	= dep/
-DEP		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
-DEP_B	= $(addprefix $(DEPDIR), $(SRC_B:.c=.d))
+COMMON_OBJ = $(addprefix $(OBJ_DIR)/,$(COMMON_SRC:.c=.o))
+PUSH_SWAP_OBJ = $(addprefix $(OBJ_DIR)/,$(PUSH_SWAP_SRC:.c=.o))
+CHECKER_OBJ = $(addprefix $(OBJ_DIR)/,$(CHECKER_SRC:.c=.o))
+DEP = $(COMMON_OBJ:.o=.d) $(PUSH_SWAP_OBJ:.o=.d) $(CHECKER_OBJ:.o=.d)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-		@echo "$(CYAN)Linking $(NAME)...$(WHITE)"
-		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-		@echo "$(GREEN)Done$(WHITE)"
+$(NAME): $(COMMON_OBJ) $(PUSH_SWAP_OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
-$(OBJDIR)%.o: $(SRCPATH)%.c
-		@mkdir -p $(@D)
-		@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+bonus: $(BONUS_NAME)
 
-$(DEPDIR)%.d: $(SRCPATH)%.c
-		@mkdir -p $(@D)
-		@$(CC) $(CFLAGS) $(INC) -MM $< -MT $(@:.d=.o) -MF $@ -MP
+$(BONUS_NAME): $(COMMON_OBJ) $(CHECKER_OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
--include $(DEP)
-
-bonus: $(NAME_B)
-
-$(NAME_B): $(OBJ_B)
-		@echo "$(CYAN)Linking $(NAME_B)...$(WHITE)"
-		@$(CC) $(CFLAGS) $(OBJ_B) -o $(NAME_B)
-		@echo "$(GREEN)Done$(WHITE)"
-
-$(OBJDIR)%.o: $(SRCP_B)%.c
-		@mkdir -p $(@D)
-		@$(CC) $(CFLAGS) $(INC) -c $< -o $@
-
-$(DEPDIR)%.d: $(SRCP_B)%.c
-		@mkdir -p $(@D)
-		@$(CC) $(CFLAGS) $(INC) -MM $< -MT $(@:.d=.o) -MF $@ -MP
-
--include $(DEP_B)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD -MP -c $< -o $@
 
 clean:
-		@echo "$(RED)Cleaning $(NAME)...$(WHITE)"
-		@$(RM) $(OBJDIR) $(DEPDIR)
-		@echo "$(GREEN)Done$(WHITE)"
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-		@$(RM) $(NAME)
-		@$(RM) $(NAME_B)
+	rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
-norm:
-	@echo "$(YELLOW)Executing norminette...$(WHITE)"
-	@norminette inc/*
-	@norminette src/*
+-include $(DEP)
 
-.PHONY: all clean fclean re norm
+.PHONY: all bonus clean fclean re

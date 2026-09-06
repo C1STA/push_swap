@@ -67,29 +67,45 @@ void	checks(t_stack *L, int n)
 	}
 }
 
-int	ft_atoi(const char *s, t_stack *L)
+static long	parse_magnitude(const char *s, int sign, t_stack *L)
 {
 	long	res;
-	int		sign;
+	long	limit;
+	int		digit;
 
 	res = 0;
-	sign = 1;
-	if (!*s)
+	limit = INT_MAX;
+	if (sign < 0)
+		limit++;
+	if (*s < '0' || *s > '9')
+		error_return(L);
+	while (*s >= '0' && *s <= '9')
+	{
+		digit = *s - '0';
+		if (res > (limit - digit) / 10)
+			error_return(L);
+		res = res * 10 + digit;
+		s++;
+	}
+	if (*s)
+		error_return(L);
+	return (res * sign);
+}
+
+int	ft_atoi(const char *s, t_stack *L)
+{
+	int	sign;
+
+	if (!s)
 		error_return(L);
 	while ((*s >= 9 && *s <= 13) || *s == 32)
 		s++;
-	if ((*s == '-' || *s == '+') && *(s + 1))
+	sign = 1;
+	if (*s == '-' || *s == '+')
 	{
 		if (*s == '-')
 			sign = -1;
 		s++;
 	}
-	while (*s >= '0' && *s <= '9')
-	{
-		res = res * 10 + *s - '0';
-		s++;
-	}
-	if ((res * sign) < INT_MIN || (res * sign) > INT_MAX || *s)
-		error_return(L);
-	return ((int)res * sign);
+	return ((int)parse_magnitude(s, sign, L));
 }
